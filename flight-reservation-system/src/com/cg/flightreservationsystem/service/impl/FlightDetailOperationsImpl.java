@@ -1,19 +1,51 @@
 package com.cg.flightreservationsystem.service.impl;
 
-import java.util.Collection;
+import java.util.ArrayList;
+
+import java.util.List;
 
 import com.cg.flightreservationsystem.dto.FlightDTO;
 
-public class FlightDetailOperationsImpl {
+import com.cg.flightreservationsystem.exception.EmptyListException;
+import com.cg.flightreservationsystem.staticdb.Flightdb;
 
-	public boolean modify(String flightId, int capacity) {
+
+public class FlightDetailOperationsImpl {
+	static Flightdb flightdb = new Flightdb();
+	public boolean modify(String flightId, int capacity) throws EmptyListException {
 		// TODO Auto-generated method stub
-		return false;
+		boolean flag;
+		flag = false;
+		flightdb.add();
+		if(!flightdb.getFlightList().isEmpty()) {
+			for(FlightDTO flight: flightdb.getFlightList())
+			{
+				if(flight.getFlightId()==flightId)
+				{
+					flight.setCapacity(capacity);
+					break;
+				}
+			}
+		}
+			else
+			{
+				throw new EmptyListException("List is Empty");
+			}
+		return flag;
 	}
 
-	public static Collection<? extends FlightDTO> view() {
+	public static List<FlightDTO> view() throws EmptyListException {
 		// TODO Auto-generated method stub
-		return null;
+		flightdb.add();
+		if(!flightdb.getFlightList().isEmpty())
+		{
+		List<FlightDTO>flightList = new ArrayList<FlightDTO>();
+		flightList.addAll(flightdb.view());
+		return flightList;
+		}
+		else {
+			throw new EmptyListException("List is empty");
+		}
 	}
 
 }

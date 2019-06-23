@@ -32,4 +32,10 @@ public class Flightdb {
 	
 
 }
+	public List<FlightDTO> getFlightList() {
+		return flightList;
+	}
+	public void setFlightList(List<FlightDTO> flightList) {
+		this.flightList = flightList;
+	}
 }

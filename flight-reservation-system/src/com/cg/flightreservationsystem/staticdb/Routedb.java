@@ -17,6 +17,12 @@ public class Routedb {
 		routeList.add(new RouteDTO("ro101", "Delhi", "Pune"));
 		routeList.add(new RouteDTO("ro101", "Delhi", "Mumbai"));
 	}
+	public List<RouteDTO> getRouteList() {
+		return routeList;
+	}
+	public void setRouteList(List<RouteDTO> routeList) {
+		this.routeList = routeList;
+	}
 	public List<RouteDTO> view() throws EmptyListException {
 		if(!routeList.isEmpty())
 		{

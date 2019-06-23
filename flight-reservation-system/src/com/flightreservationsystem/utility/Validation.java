@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.cg.flightreservationsystem.exception.CapacityInvalidException;
 import com.cg.flightreservationsystem.exception.DateInvalidException;
 import com.cg.flightreservationsystem.exception.IdInvalidException;
 import com.cg.flightreservationsystem.exception.PlaceInvalidException;
+import com.cg.flightreservationsystem.exception.PriceInvalidException;
 import com.cg.flightreservationsystem.exception.TimeInvalidException;
 
 public class Validation {
@@ -76,9 +78,23 @@ public class Validation {
 		}
 		return true; 
 	}
-	public boolean isCapacityValid(int capacity) {
+	public boolean isCapacityValid(int capacity) throws CapacityInvalidException {
 		// TODO Auto-generated method stub
+		if(capacity<100)
+		{
+			throw new CapacityInvalidException("Minimum capacity should be 100");
+		}
 		return false;
+	}
+	public boolean isPricevalid(String price) throws PriceInvalidException {
+		// TODO Auto-generated method stub
+		Pattern pattern = Pattern.compile("[1,9][0-9]{1,12}(\\.[0-9]+)?");
+		Matcher match = pattern.matcher(price);
+		if(!match.matches())
+		{
+			throw new PriceInvalidException("please enter the price correctly");
+		}
+		return true; 
 	}
 	
 

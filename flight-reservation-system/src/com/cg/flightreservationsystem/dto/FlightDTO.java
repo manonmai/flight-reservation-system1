@@ -11,10 +11,7 @@ public class FlightDTO {
 	public String getFlightId() {
 		return flightId;
 	}
-	@Override
-	public String toString() {
-		return "FlightDTO [flightId=" + flightId + ", capacity=" + capacity + "]";
-	}
+	
 	public void setFlightId(String flightId) {
 		this.flightId = flightId;
 	}
@@ -24,6 +21,9 @@ public class FlightDTO {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	
+	@Override
+	public String toString() {
+		return "flightId=" + flightId + ", capacity=" + capacity;
+	}
 
 }

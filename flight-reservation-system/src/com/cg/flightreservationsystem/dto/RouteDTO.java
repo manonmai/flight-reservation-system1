@@ -31,7 +31,6 @@ public class RouteDTO {
 	
 	@Override
 	public String toString() {
-		return "RouteDTO [routeId=" + routeId + ", sourceCity=" + sourceCity + ", destinationCity=" + destinationCity
-				+ "]";
+		return "routeId=" + routeId + ", sourceCity=" + sourceCity + ", destinationCity=" + destinationCity;
 }
 }
